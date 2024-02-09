@@ -77,6 +77,9 @@
 
 		peer.addListener('connection', (data) => {
 			console.log('connection', data);
+			data.addListener('open', () => {
+				data.send('Hello, world!');
+			});
 			data.addListener('data', (data) => {
 				ingressItems.push({ id: incrementalId++, name: data as string });
 			});
