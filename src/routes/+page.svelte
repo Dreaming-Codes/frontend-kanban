@@ -50,6 +50,7 @@
 
 	function sendTask() {
   if (task.lenght < 5) {
+     alert("minimo 5 caratteri")
      return;
   }
 		dataConnection.send(task);
