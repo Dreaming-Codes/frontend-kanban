@@ -9,11 +9,6 @@
 	let jsConfetti: JSConfetti;
 
 	onMount(async () => {
-		if (confettiCanvas) {
-			confettiCanvas.width = window.innerWidth;
-			confettiCanvas.height = window.innerHeight;
-		}
-
 		const confettiModule = await import('js-confetti');
 		const JSConfetti = confettiModule.default;
 
@@ -34,18 +29,13 @@
 		await Promise.all([emojis, confetti]);
 	}
 
-	function resizeCanvas() {
-		if (confettiCanvas) {
-			confettiCanvas.width = window.innerWidth;
-			confettiCanvas.height = window.innerHeight;
-		}
-	}
-
+	$: innerWidth = 0
+	$: innerHeight = 0
 </script>
 
-<svelte:window on:resize={resizeCanvas} />
+<svelte:window bind:innerWidth bind:innerHeight />
 <div class="absolute w-screen h-screen z-50">
-	<canvas bind:this="{confettiCanvas}" />
+	<canvas height="{innerHeight}" width="{innerWidth}" bind:this="{confettiCanvas}" />
 </div>
 
 <Vertical>
