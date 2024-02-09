@@ -13,13 +13,13 @@
 
 	let incrementalId = 0;
 
-	let ingressItems: {id: number, name: string}[] = [];
+	let ingressItems: { id: number, name: string }[] = [];
 
-	let todoItems: {id: number, name: string}[] = [];
+	let todoItems: { id: number, name: string }[] = [];
 
-	let inProgressItems: {id: number, name: string}[] = [];
+	let inProgressItems: { id: number, name: string }[] = [];
 
-	let doneItems: {id: number, name: string}[] = [];
+	let doneItems: { id: number, name: string }[] = [];
 
 	const flipDurationMs = 300;
 
@@ -68,12 +68,21 @@
 		const peerJsModule = await import('peerjs');
 		const Peer = peerJsModule.Peer;
 
-		const peer = new Peer();
+		const response = await fetch("https://dreamingcodes.metered.live/api/v1/turn/credentials?apiKey=ae83c67b424b2898cb83fe90545822b812de");
 
-		peer.addListener('open', (id)=> {
+		// Saving the response in the iceServers array
+		const iceServers = await response.json();
+
+		const peer = new Peer({
+			config: {
+				'iceServers': iceServers
+			}
+		});
+
+		peer.addListener('open', (id) => {
 			connectionId = id;
 			console.log('My peer ID is: ' + id);
-		})
+		});
 
 		peer.addListener('connection', (data) => {
 			console.log('connection', data);
@@ -93,7 +102,7 @@
 
 <Slide>
 	<div class="absolute slide-container z-50 fragment fade-out bg-black/70 backdrop-blur">
-		<QR class="max-h-[70%] mx-auto" data="{connectionUrl}"/>
+		<QR class="max-h-[70%] mx-auto" data="{connectionUrl}" />
 	</div>
 	<div class="slide-container">
 		<div class="w-full h-full p-20 flex gap-4">

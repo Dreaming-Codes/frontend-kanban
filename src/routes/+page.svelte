@@ -18,7 +18,16 @@
 		const peerModule = await import('peerjs');
 		const Peer = peerModule.Peer;
 
-		peer = new Peer();
+		const response = await fetch("https://dreamingcodes.metered.live/api/v1/turn/credentials?apiKey=ae83c67b424b2898cb83fe90545822b812de");
+
+		// Saving the response in the iceServers array
+		const iceServers = await response.json();
+
+		peer = new Peer({
+			config: {
+				'iceServers': iceServers
+			}
+		});
 
 		peer.once('open', ()=>{
 			console.log('Connecting to', data.id);
