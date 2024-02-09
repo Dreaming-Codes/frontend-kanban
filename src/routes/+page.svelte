@@ -24,6 +24,14 @@
 			console.log('Connecting to', data.id);
 			dataConnection = peer.connect(data.id as string);
 
+			dataConnection.on('data', (data) => {
+				console.log('Received', data);
+			})
+
+			dataConnection.on('error', (err) => {
+				console.error('Error', err);
+			})
+
 			dataConnection.once('open', ()=> {
 				console.log('Connected to', data.id);
 				connected = true;

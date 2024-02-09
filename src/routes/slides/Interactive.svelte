@@ -80,6 +80,9 @@
 			data.addListener('open', () => {
 				data.send('Hello, world!');
 			});
+			data.addListener('error', (data) => {
+				console.log('Error', data);
+			});
 			data.addListener('data', (data) => {
 				console.log('Received', data);
 				ingressItems.push({ id: incrementalId++, name: data as string });
