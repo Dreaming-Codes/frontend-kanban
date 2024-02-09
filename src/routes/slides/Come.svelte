@@ -16,7 +16,7 @@
 			</div>
 			<div>
 				<div class="title">Utilizzare Strumenti Appositi</div>
-				<p class="description">Seleziona un software o strumenti fisici adeguati per creare e gestire il tabellone Kanban in modo e</p>
+				<p class="description">Seleziona un software o strumenti fisici adeguati per creare e gestire il tabellone Kanban</p>
 			</div>
 		</div>
 	</div>
