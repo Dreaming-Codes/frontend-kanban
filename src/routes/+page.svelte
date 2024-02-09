@@ -49,6 +49,9 @@
 	});
 
 	function sendTask() {
+  if (task.lenght < 5) {
+     return;
+  }
 		dataConnection.send(task);
 		task = '';
 	}
