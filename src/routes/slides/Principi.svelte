@@ -22,7 +22,7 @@
 					<div class="fragment highlight-current-green custom blur" data-fragment-index="{index}">
 						<span class="flex-auto">
 							<dt>
-								<span>{index}.</span>
+								<span>{index+1}.</span>
 								<span class="flex=auto">{principio[0]}</span>
 							</dt>
 							<dd class="fragment" data-fragment-index="{Object.entries(principi).length+index}">
