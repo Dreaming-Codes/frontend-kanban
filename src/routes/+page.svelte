@@ -18,17 +18,17 @@
 
 		peer = new Peer();
 
-		console.log('Connecting to', data.id);
-		dataConnection = peer.connect(data.id as string);
+		peer.once('open', ()=>{
+			console.log('Connecting to', data.id);
+			dataConnection = peer.connect(data.id as string);
 
-		dataConnection.once('open', ()=> {
-			console.log('Connected to', data.id);
-			connected = true;
+			dataConnection.once('open', ()=> {
+				console.log('Connected to', data.id);
+				connected = true;
+			})
 		})
-		if (dataConnection.open) {
-			console.log('Connected to', data.id);
-			connected = true;
-		}
+
+
 	});
 
 
