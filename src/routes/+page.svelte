@@ -10,6 +10,8 @@
 	let peer: Peer;
 	let dataConnection: DataConnection;
 
+	let task: string;
+
 	let connected = false;
 
 	onMount(async () => {
@@ -27,9 +29,12 @@
 				connected = true;
 			})
 		})
-
-
 	});
+
+	function sendTask() {
+		dataConnection.send(task);
+		task = '';
+	}
 
 
 </script>
@@ -50,7 +55,12 @@
 			</div>
 		</div>
 	{:else}
-		<div></div>
+		<div class="flex flex-col items-center content-center justify-items-center h-screen w-screen px-5" transition:blur>
+			<div class="input-group input-group-divider my-auto">
+				<input type="search" placeholder="Inserisci task" class="py-4" minlength="8" maxlength="30" bind:value={task} />
+				<button class="variant-filled-secondary py-2" on:click={sendTask}><span class="w-full">Invia</span></button>
+			</div>
+		</div>
 	{/if}
 {/if}
 
