@@ -81,6 +81,7 @@
 				data.send('Hello, world!');
 			});
 			data.addListener('data', (data) => {
+				console.log('Received', data);
 				ingressItems.push({ id: incrementalId++, name: data as string });
 			});
 		});
