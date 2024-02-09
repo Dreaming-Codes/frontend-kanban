@@ -44,7 +44,7 @@
 </script>
 
 <svelte:window on:resize={resizeCanvas} />
-<div class="absolute w-full h-full z-50">
+<div class="absolute w-screen h-screen z-50">
 	<canvas bind:this="{confettiCanvas}" />
 </div>
 
