@@ -10,7 +10,7 @@
 
 	onMount(async () => {
 		if (confettiCanvas) {
-			confettiCanvas.width = window.outerWidth;
+			confettiCanvas.width = window.innerWidth;
 			confettiCanvas.height = window.innerHeight;
 		}
 
@@ -36,7 +36,7 @@
 
 	function resizeCanvas() {
 		if (confettiCanvas) {
-			confettiCanvas.width = window.outerWidth;
+			confettiCanvas.width = window.innerWidth;
 			confettiCanvas.height = window.innerHeight;
 		}
 	}
